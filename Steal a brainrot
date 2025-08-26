@@ -1,8 +1,8 @@
 local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/Vape.txt"))()
 
-local win = lib:Window("Jetto Hub [By Darius]", Color3.fromRGB(0,0,0), Enum.KeyCode.RightControl)
+local win = lib:Window("Darius hub [Best stealer]", Color3.fromRGB(0,0,0), Enum.KeyCode.RightControl)
 
--- Notes tab above Combat tab
+-- Notes tab above Stealing tab
 local notes = win:Tab("Notes")
 
 notes:Button("Status: Free", function()
@@ -25,16 +25,16 @@ notes:Button("Script Hub [ Steal a brainrot ]", function()
     print("Script Hub button clicked")
 end)
 
--- Combat tab with toggles (removed the specified toggles)
-local combat = win:Tab("Combat")
+-- Stealing tab with Chili Tp script toggle
+local stealing = win:Tab("Stealing")
 
-combat:Toggle("Delfi Fast Steal [OP]", false, function(t)
+stealing:Toggle("Chili Tp script [best]", false, function(t)
     if t then
-        loadstring(game:HttpGet("https://pastefy.app/pQxsA7BR/raw"))()
+        loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/a3e13a4a85ac4c2da17a6baab051ee1b.lua"))()
     end
 end)
 
--- Safety tab with placeholder toggles
+-- Safety tab with toggles
 local safety = win:Tab("Safety")
 
 safety:Toggle("Bypass Anti Cheat", false, function(t)
@@ -77,7 +77,7 @@ safety:Toggle("Remove in-game Hackers [OP]", false, function(t)
     end
 end)
 
--- Pet Finder tab with toggle executing external script
+-- Pet Finder tab with toggle
 local petFinder = win:Tab("Pet Finder")
 
 petFinder:Toggle("Pet-Finder [Credits Ugly]", false, function(t)
@@ -86,7 +86,7 @@ petFinder:Toggle("Pet-Finder [Credits Ugly]", false, function(t)
     end
 end)
 
--- Settings tab with working Server Hop and Rejoin toggles
+-- Settings tab with toggles
 local settings = win:Tab("Settings")
 
 settings:Toggle("Server Hop", false, function(t)
