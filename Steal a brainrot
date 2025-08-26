@@ -1,6 +1,6 @@
 local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/Vape.txt"))()
 
-local win = lib:Window("best Hub", Color3.fromRGB(0,0,0), Enum.KeyCode.RightControl)
+local win = lib:Window("Jetto Hub [By Darius]", Color3.fromRGB(0,0,0), Enum.KeyCode.RightControl)
 
 -- Notes tab above Combat tab
 local notes = win:Tab("Notes")
