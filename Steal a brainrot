@@ -34,6 +34,74 @@ stealing:Toggle("Chili Tp script [best]", false, function(t)
     end
 end)
 
+-- Pet Finder tab with toggle
+local petFinder = win:Tab("Pet Finder")
+
+petFinder:Toggle("Pet-Finder [Credits Ugly]", false, function(t)
+    if t then
+        loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/e9dc250fbc8890db5a9c563ac01d9a1f.lua"))()
+    end
+end)
+
+-- Settings tab with toggles
+local settings = win:Tab("Settings")
+
+settings:Toggle("Server Hop", false, function(t)
+    if t then
+        spawn(function()
+            local TeleportService = game:GetService("TeleportService")
+            local Players = game:GetService("Players")
+            local PlaceID = game.PlaceId
+            local servers = {}
+            local request = syn and syn.request or http and http.request or http_request or request or nil
+
+            local function getData(url)
+                local s, res = pcall(function()
+                    return request({Url = url, Method = "GET"})
+                end)
+                if s and res and res.Body then
+                    return res.Body
+                end
+                return nil
+            end
+
+            local function serverHop()
+                local data = getData("https://games.roblox.com/v1/games/" .. tostring(PlaceID) .. "/servers/Public?sortOrder=Asc&limit=100")
+                if data then
+                    local serversData = game:GetService("HttpService"):JSONDecode(data)
+                    for i, v in pairs(serversData.data) do
+                        if type(v) == "table" and v.id and v.playing and v.playing < v.maxPlayers then
+                            if not table.find(servers, v.id) and v.id ~= game.JobId then
+                                servers[#servers+1] = v.id
+                            end
+                        end
+                    end
+                    if #servers > 0 then
+                        local randomServer = servers[math.random(1,#servers)]
+                        TeleportService:TeleportToPlaceInstance(PlaceID, randomServer, Players.LocalPlayer)
+                    else
+                        print("No available servers to hop to.")
+                    end
+                else
+                    print("Failed to retrieve server list.")
+                end
+            end
+
+            while t do
+                serverHop()
+                wait(15)
+            end
+        end)
+    end
+end)
+
+settings:Toggle("Rejoin", false, function(t)
+    if t then
+        local TeleportService = game:GetService("TeleportService")
+        local Players = game:GetService("Players")
+        TeleportService:Teleport(game.PlaceId, Players.LocalPlayer)
+    end
+end)
 -- Safety tab with toggles
 local safety = win:Tab("Safety")
 
