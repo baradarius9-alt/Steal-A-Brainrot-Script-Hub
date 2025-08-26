@@ -2,7 +2,7 @@ local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scr
 
 local win = lib:Window("best Hub", Color3.fromRGB(0,0,0), Enum.KeyCode.RightControl)
 
--- Notes tab above Combat tab
+-- Notes tab
 local notes = win:Tab("Notes")
 
 notes:Button("Status: Free", function()
@@ -25,7 +25,7 @@ notes:Button("Script Hub [ Steal a brainrot ]", function()
     print("Script Hub button clicked")
 end)
 
--- Combat tab with toggles and replaced Delfi Fast Steal script
+-- Combat tab
 local combat = win:Tab("Combat")
 
 combat:Toggle("Delfi Fast Steal [OP]", false, function(t)
@@ -58,7 +58,7 @@ combat:Toggle("Uglys Free Menu", false, function(t)
     end
 end)
 
--- Safety tab with placeholder toggles
+-- Safety tab
 local safety = win:Tab("Safety")
 
 safety:Toggle("Bypass Anti Cheat", false, function(t)
@@ -101,19 +101,22 @@ safety:Toggle("Remove in-game Hackers [OP]", false, function(t)
     end
 end)
 
--- Pet Finder tab with toggle executing external script
-local petFinder = win:Tab("Pet Finder")
+-- Extras tab (formerly Pet Finder)
+local extras = win:Tab("Extras")
 
-petFinder:Toggle("Pet-Finder [Credits Ugly]", false, function(t)
+extras:Toggle("Pet-Finder [Credits Ugly]", false, function(t)
     if t then
         loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/e9dc250fbc8890db5a9c563ac01d9a1f.lua"))()
     end
 end)
 
--- Settings tab with working Server Hop and Rejoin toggles
-local settings = win:Tab("Settings")
+extras:Toggle("Infinite Yield", false, function(t)
+    if t then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+    end
+end)
 
-settings:Toggle("Server Hop", false, function(t)
+extras:Toggle("Server Hop", false, function(t)
     if t then
         spawn(function()
             local TeleportService = game:GetService("TeleportService")
@@ -162,7 +165,7 @@ settings:Toggle("Server Hop", false, function(t)
     end
 end)
 
-settings:Toggle("Rejoin", false, function(t)
+extras:Toggle("Rejoin", false, function(t)
     if t then
         local TeleportService = game:GetService("TeleportService")
         local Players = game:GetService("Players")
